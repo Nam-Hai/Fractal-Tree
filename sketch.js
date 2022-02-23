@@ -1,14 +1,17 @@
 const lenght = 100;
 const coefDiminution = 0.67;
+let angle;
 let branchLenght = [];
 
 function setup() {
   createCanvas(400, 400);
+  angle = PI / 4;
+  slider = createSlider(0, PI, PI / 4, 0.01)
 }
 
 function draw() {
   background(51);
-
+  angle = slider.value();
   stroke(255)
   translate(200, height)
   branch(lenght);
@@ -22,11 +25,11 @@ function branch(lenght) {
   }
 
   translate(0, -lenght);
-  rotate(- PI / 4);
+  rotate(- angle);
   branch(lenght * coefDiminution);
 
-  rotate(PI / 2);
+  rotate(2 * angle);
   branch(lenght * coefDiminution)
-  rotate(-PI / 4);
+  rotate(- angle);
   translate(0, lenght)
 }
