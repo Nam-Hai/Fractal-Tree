@@ -1,17 +1,21 @@
 const lenght = 100;
-const coefDiminution = 0.67;
+let coefDiminution;
 let angle;
-let branchLenght = [];
+let curvature;
 
 function setup() {
   createCanvas(400, 400);
   angle = PI / 4;
-  slider = createSlider(0, PI, PI / 4, 0.01)
+  angleSlider = createSlider(0, PI, PI / 4, 0.01);
+  coefSlidier = createSlider(0, 0.75, 0.67, 0.01);
+  curvatureSlider = createSlider(0.1, 1.5, 1, 0.01);
 }
 
 function draw() {
   background(51);
-  angle = slider.value();
+  angle = angleSlider.value();
+  coefDiminution = coefSlidier.value();
+  curvature = curvatureSlider.value();
   stroke(255)
   translate(200, height)
   branch(lenght);
@@ -19,7 +23,7 @@ function draw() {
 
 function branch(lenght) {
   line(0, 0, 0, - lenght);
-  if (lenght < 5) {
+  if (lenght < 3) {
 
     return
   }
@@ -28,8 +32,8 @@ function branch(lenght) {
   rotate(- angle);
   branch(lenght * coefDiminution);
 
-  rotate(2 * angle);
+  rotate(angle + curvature * angle);
   branch(lenght * coefDiminution)
-  rotate(- angle);
+  rotate(- curvature * angle);
   translate(0, lenght)
 }
