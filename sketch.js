@@ -1,14 +1,15 @@
-const lenght = 100;
+const lenght = 200;
 let coefDiminution;
 let angle;
 let curvature;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 800);
+
   angle = PI / 4;
   angleSlider = createSlider(0, PI, PI / 4, 0.01);
   coefSlidier = createSlider(0, 0.75, 0.67, 0.01);
-  curvatureSlider = createSlider(0.1, 1.5, 1, 0.01);
+  curvatureSlider = createSlider(0.1, 1, 1, 0.01);
 }
 
 function draw() {
@@ -17,7 +18,7 @@ function draw() {
   coefDiminution = coefSlidier.value();
   curvature = curvatureSlider.value();
   stroke(255)
-  translate(200, height)
+  translate(width / 2, height)
   branch(lenght);
 }
 
